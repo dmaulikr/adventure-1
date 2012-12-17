@@ -149,9 +149,10 @@ int const seconds = 1.0;
         _locationManager.delegate = self;
     }
     [_locationManager startUpdatingLocation];
+    _locationManager.delegate = self;
+    [_locationManager startMonitoringSignificantLocationChanges];
     sleep(1);
     CLLocation *loc = [_locationManager location];
-    //[self reverseGeocodeWithLoc:loc];
     NSLog(@"loc: %@", [loc description]);
     [_locationManager stopUpdatingLocation];
     
@@ -199,5 +200,4 @@ int const seconds = 1.0;
         block(loc, data);
     });
 }
-
 @end
