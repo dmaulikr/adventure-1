@@ -20,8 +20,10 @@
 @property (nonatomic, retain) CLLocationManager *locationManager;
 
 @property (strong, nonatomic) IBOutlet UIButton *locButton;
+@property (strong, nonatomic) IBOutlet UIButton *endButton;
 @property (retain, nonatomic) NSTimer *timer;
 - (CLLocation*)getLocation;
 - (IBAction)activateBackground:(id)sender;
+- (IBAction)endAdventure:(id)sender;
 
 @end
