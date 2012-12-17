@@ -36,6 +36,16 @@
 }
 
 - (IBAction)getLocation:(id)sender {
-    _locButton
+    if (!locationManager)
+    {
+        locationManager = [[CLLocationManager alloc] init];
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+        locationManager.delegate = self;
+    }
+    [locationManager startUpdatingLocation];
+    sleep(1);
+    CLLocation *loc = [locationManager location];
+    NSLog(@"loc: %@", [loc description]);
+    [locationManager stopUpdatingLocation];
 }
 @end
