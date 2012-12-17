@@ -97,8 +97,8 @@ int const seconds = 1.0;
 	// Commit the change.
 	NSError *error;
 	if (![_managedObjectContext save:&error]) {
-		// Handle the error.
-	}
+        NSLog(@"Error Error Error");
+    }
     
     return loc;
 }
