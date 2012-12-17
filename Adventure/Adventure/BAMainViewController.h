@@ -10,10 +10,15 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface BAMainViewController : UIViewController <CLLocationManagerDelegate> {
-    CLLocationManager *locationManager;
+
     UIBackgroundTaskIdentifier task;
     BOOL backgroundStarted;
 }
+
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+
+@property (nonatomic, retain) CLLocationManager *locationManager;
+
 @property (strong, nonatomic) IBOutlet UIButton *locButton;
 @property (strong, nonatomic) IBOutlet UIButton *endButton;
 @property (retain, nonatomic) NSTimer *timer;

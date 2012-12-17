@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BAAppDelegate : UIResponder <UIApplicationDelegate>
+@interface BAAppDelegate : UIResponder <UIApplicationDelegate> {
+}
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, retain) UINavigationController *navigationController;
+
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
