@@ -8,6 +8,7 @@
 
 #import "BAMainViewController.h"
 #import "BAAppDelegate.h"
+#import "Location.h"
 @interface BAMainViewController ()
 
 @end
@@ -89,6 +90,28 @@ int const seconds = 1.0;
     CLLocation *loc = [_locationManager location];
     NSLog(@"loc: %@", [loc description]);
     [_locationManager stopUpdatingLocation];
+    
+    
+    /*
+	 Create a new instance of the Event entity.
+	 */
+	Location *location = (Location *)[NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:_managedObjectContext];
+	
+	// Configure the new event with information from the location.
+	CLLocationCoordinate2D coordinate = [loc coordinate];
+	[location setLatitude:[NSNumber numberWithDouble:coordinate.latitude]];
+	[location setLongitude:[NSNumber numberWithDouble:coordinate.longitude]];
+	
+	// Should be the location's timestamp, but this will be constant for simulator.
+	// [event setCreationDate:[location timestamp]];
+	[location setCreationDate:[NSDate date]];
+	
+	// Commit the change.
+	NSError *error;
+	if (![_managedObjectContext save:&error]) {
+        NSLog(@"Error Error Error");
+    }
+    
     return loc;
 }
 @end
