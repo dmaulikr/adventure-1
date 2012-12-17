@@ -29,5 +29,6 @@
 - (IBAction)activateBackground:(id)sender;
 - (IBAction)endAdventure:(id)sender;
 - (IBAction)startAdventure:(id)sender;
+- (void)reverseGeocodeWithLoc:(CLLocation*) loc;
 
 @end
