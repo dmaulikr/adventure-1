@@ -142,6 +142,7 @@ int const seconds = 1.0;
 }
 
 -(void)reverseGeocodeWithLoc:(CLLocation*) loc {
+
     double lat = [loc coordinate].latitude ;
     double lon = [loc coordinate].longitude;
     NSUInteger rad = 10;
@@ -165,9 +166,11 @@ int const seconds = 1.0;
         _locationManager.delegate = self;
     }
     [_locationManager startUpdatingLocation];
+    _locationManager.delegate = self;
+    [_locationManager startMonitoringSignificantLocationChanges];
     sleep(1);
     CLLocation *loc = [_locationManager location];
-    //[self reverseGeocodeWithLoc:loc];
+    [self reverseGeocodeWithLoc:loc];
     NSLog(@"loc: %@", [loc description]);
     [_locationManager stopUpdatingLocation];
     
@@ -195,4 +198,10 @@ int const seconds = 1.0;
     [_locationsArray insertObject:location atIndex:0];
     return loc;
 }
+
+//End the adventure?
+-(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    
+}
+
 @end
