@@ -79,8 +79,8 @@ int const seconds = 1.0;
 }
 
 -(void)reverseGeocodeWithLoc:(CLLocation*) loc {
-    double lat = 10;
-    double lon = 10;
+    double lat = [loc coordinate].latitude ;
+    double lon = [loc coordinate].longitude;
     NSUInteger rad = 10;
     NSString* url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%f,%f&radius=%i&sensor=true&key=%@", lat, lon, rad, kG_API_KEY];
     
