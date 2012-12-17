@@ -13,14 +13,15 @@
 @dynamic latitude;
 @dynamic longitude;
 @dynamic adventure;
-
+@dynamic jsonData;
 -(id)copyWithZone:(NSZone *)zone
 {
     Location* copy = [[Location alloc] init];
     copy.creationDate = [self.creationDate copy];
     copy.latitude = [self.latitude copy];
     copy.longitude = [self.longitude copy];
-    self.adventure = [self.adventure copy];
+    copy.adventure = [self.adventure copy];
+    copy.jsonData = [self.jsonData copy];
     return copy;
 }
 

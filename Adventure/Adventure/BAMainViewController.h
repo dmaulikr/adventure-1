@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-
+#import "Location.h"
 @interface BAMainViewController : UIViewController <CLLocationManagerDelegate> {
 
     UIBackgroundTaskIdentifier task;
@@ -29,5 +29,6 @@
 - (IBAction)activateBackground:(id)sender;
 - (IBAction)endAdventure:(id)sender;
 - (IBAction)startAdventure:(id)sender;
+- (void)reverseGeocodeWithLoc:(Location*) loc andBlock:(void(^)(Location*, NSData*)) block;
 
 @end

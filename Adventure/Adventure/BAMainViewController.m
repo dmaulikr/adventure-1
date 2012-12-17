@@ -8,8 +8,11 @@
 
 #import "BAMainViewController.h"
 #import "BAAppDelegate.h"
-#import "Location.h"
 #import "Adventure.h"
+
+#define kG_API_KEY @"AIzaSyBreyyLHJ3ycs5M2TshR1x65SrWeDpmMAo"
+#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+
 
 @interface BAMainViewController ()
 
@@ -168,12 +171,33 @@ int const seconds = 1.0;
 //	[location setCreationDate:[loc timestamp]];
 	[location setCreationDate:[NSDate date]];
     
+    void (^commitBlock)(Location*, NSData*) = ^(Location* loc, NSData* data){
+        loc.jsonData = data;
+        NSError *error;
+        if (![_managedObjectContext save:&error]) {
+            NSLog(@"Error Error Error");
+        }
+        [_locationsArray insertObject:location atIndex:0];
+    };
+    
+    [self reverseGeocodeWithLoc:location andBlock:commitBlock];
 	// Commit the change.
-	NSError *error;
-	if (![_managedObjectContext save:&error]) {
-        NSLog(@"Error Error Error");
-    }
-    [_locationsArray insertObject:location atIndex:0];
     return loc;
 }
+
+-(void)reverseGeocodeWithLoc:(Location*) loc andBlock:(void(^)(Location*, NSData*)) block {
+    double lat = [[loc latitude] doubleValue];
+    double lon = [[loc longitude] doubleValue];
+    NSLog(@"Long = %f, Lat = %f", lon, lat);
+    NSUInteger rad = 10;
+    NSString* url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%f,%f&radius=%i&sensor=true&key=%@", lat, lon, rad, kG_API_KEY];
+    
+    NSURL* requestUrl = [NSURL URLWithString:url];
+    dispatch_async(kBgQueue, ^{
+        NSData* data = [NSData dataWithContentsOfURL: requestUrl];
+        
+        block(loc, data);
+    });
+}
+
 @end
