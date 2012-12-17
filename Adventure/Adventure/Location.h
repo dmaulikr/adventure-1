@@ -8,9 +8,10 @@
 
 #import <CoreData/CoreData.h>
 
-@interface Location : NSManagedObject
+@interface Location : NSManagedObject <NSCopying>
 @property (nonatomic, retain) NSDate *creationDate;
 @property (nonatomic, retain) NSNumber *latitude;
 @property (nonatomic, retain) NSNumber *longitude;
+@property (nonatomic, retain) NSNumber *adventure;
 
 @end
