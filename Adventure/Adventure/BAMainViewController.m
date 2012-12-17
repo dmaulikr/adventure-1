@@ -91,7 +91,6 @@ int const seconds = 1.0;
                               JSONObjectWithData:data //1
                               options:kNilOptions
                               error:nil];
-        NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     });
 }
 
@@ -105,7 +104,7 @@ int const seconds = 1.0;
     [_locationManager startUpdatingLocation];
     sleep(1);
     CLLocation *loc = [_locationManager location];
-    [self reverseGeocodeWithLoc:loc];
+    //[self reverseGeocodeWithLoc:loc];
     NSLog(@"loc: %@", [loc description]);
     [_locationManager stopUpdatingLocation];
     
