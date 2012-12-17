@@ -42,16 +42,18 @@ int const seconds = 1.0;
 }
 
 - (IBAction)activateBackground:(id)sender{
-    UIApplication* app = [UIApplication sharedApplication];
-    task = [app beginBackgroundTaskWithExpirationHandler:^{[self backgroundTask:app];}];
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:seconds target:self selector:@selector(getLocation) userInfo:nil repeats:YES];
-    BOOL timerState = [self.timer isValid];
-    NSLog(@"Timer Validity is: %@", timerState?@"YES":@"NO");
-}
-
-- (IBAction)stopBackground:(id)sender{
-    UIApplication* app = [UIApplication sharedApplication];
-    [app endBackgroundTask:task];
+    if (backgroundStarted){
+        UIApplication* app = [UIApplication sharedApplication];
+        [app endBackgroundTask:task];
+        backgroundStarted = false;
+        [self.timer invalidate];
+        self.timer = nil;
+    } else {
+        UIApplication* app = [UIApplication sharedApplication];
+        task = [app beginBackgroundTaskWithExpirationHandler:^{[self backgroundTask:app];}];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:seconds target:self selector:@selector(getLocation) userInfo:nil repeats:YES];
+        self->backgroundStarted = true;
+    }
 }
 
 - (CLLocation*)getLocation {

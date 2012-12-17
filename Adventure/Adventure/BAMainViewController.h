@@ -12,11 +12,11 @@
 @interface BAMainViewController : UIViewController <CLLocationManagerDelegate> {
     CLLocationManager *locationManager;
     UIBackgroundTaskIdentifier task;
+    BOOL backgroundStarted;
 }
 @property (strong, nonatomic) IBOutlet UIButton *locButton;
 @property (retain, nonatomic) NSTimer *timer;
 - (CLLocation*)getLocation;
 - (IBAction)activateBackground:(id)sender;
-- (IBAction)stopBackground:(id)sender;
 
 @end
