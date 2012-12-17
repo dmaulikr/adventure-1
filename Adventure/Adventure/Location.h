@@ -13,5 +13,5 @@
 @property (nonatomic, retain) NSNumber *latitude;
 @property (nonatomic, retain) NSNumber *longitude;
 @property (nonatomic, retain) NSNumber *adventure;
-
+@property (nonatomic, retain) NSData *jsonData;
 @end

@@ -6,9 +6,6 @@
 //  Copyright (c) 2012 Tal Levy. All rights reserved.
 //
 
-#define kG_API_KEY @"AIzaSyBreyyLHJ3ycs5M2TshR1x65SrWeDpmMAo"
-#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-
 #import "BADataPresentationViewController.h"
 #import "BAAppDelegate.h"
 @interface BADataPresentationViewController ()
@@ -52,27 +49,13 @@
 	// Set self's events array to the mutable array, then clean up.
 	[self setLocationsArray:mutableFetchResults];
     
+    NSLog(@"arrayL %@", [_locationsArray description]);
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
--(void)reverseGeocodeWithLoc:(CLLocation*) loc {
-    double lat = [loc coordinate].latitude ;
-    double lon = [loc coordinate].longitude;
-    NSUInteger rad = 10;
-    NSString* url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%f,%f&radius=%i&sensor=true&key=%@", lat, lon, rad, kG_API_KEY];
-    
-    NSURL* requestUrl = [NSURL URLWithString:url];
-    dispatch_async(kBgQueue, ^{
-        NSData* data = [NSData dataWithContentsOfURL: requestUrl];
-        NSDictionary* json = [NSJSONSerialization
-                              JSONObjectWithData:data //1
-                              options:kNilOptions
-                              error:nil];
-    });
 }
 
 - (void)didReceiveMemoryWarning
@@ -103,7 +86,15 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }   // Configure the cell. cell.textLabel.text = [self.booksArray objectAtIndex:indexPath.row]; return cell;
+    Location *loc = (Location*)[_locationsArray objectAtIndex:indexPath.row];
+
+    NSDictionary* json = [NSJSONSerialization
+                          JSONObjectWithData:[loc jsonData] //1
+                          options:kNilOptions
+                          error:nil];
     
+    NSString *addressName = [[[json objectForKey:@"results"] objectAtIndex:1] objectForKey:@"name"];
+    cell.textLabel.text = addressName;
     // Configure the cell...
     
     return cell;
