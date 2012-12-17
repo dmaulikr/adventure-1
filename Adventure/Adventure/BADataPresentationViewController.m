@@ -6,6 +6,9 @@
 //  Copyright (c) 2012 Tal Levy. All rights reserved.
 //
 
+#define kG_API_KEY @"AIzaSyBreyyLHJ3ycs5M2TshR1x65SrWeDpmMAo"
+#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+
 #import "BADataPresentationViewController.h"
 #import "BAAppDelegate.h"
 @interface BADataPresentationViewController ()
@@ -54,6 +57,22 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(void)reverseGeocodeWithLoc:(CLLocation*) loc {
+    double lat = [loc coordinate].latitude ;
+    double lon = [loc coordinate].longitude;
+    NSUInteger rad = 10;
+    NSString* url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%f,%f&radius=%i&sensor=true&key=%@", lat, lon, rad, kG_API_KEY];
+    
+    NSURL* requestUrl = [NSURL URLWithString:url];
+    dispatch_async(kBgQueue, ^{
+        NSData* data = [NSData dataWithContentsOfURL: requestUrl];
+        NSDictionary* json = [NSJSONSerialization
+                              JSONObjectWithData:data //1
+                              options:kNilOptions
+                              error:nil];
+    });
 }
 
 - (void)didReceiveMemoryWarning
