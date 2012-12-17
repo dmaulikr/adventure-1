@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface BADataPresentationViewController : UITableViewController
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) NSMutableArray *locationsArray;
+
+- (void)reverseGeocodeWithLoc:(CLLocation*) loc;
 
 @end

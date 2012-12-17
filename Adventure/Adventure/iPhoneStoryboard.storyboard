@@ -82,11 +82,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KPH-lz-7ye" firstAttribute="centerX" secondItem="vfm-gp-VL6" secondAttribute="centerX" type="default" id="brW-xv-Lyb"/>
-                            <constraint firstAttribute="bottom" secondItem="ul8-xn-2jM" secondAttribute="bottom" constant="147" id="dgJ-gF-kQG"/>
-                            <constraint firstItem="akD-vf-0YT" firstAttribute="top" secondItem="vfm-gp-VL6" secondAttribute="top" constant="220" id="fX8-3y-REf"/>
-                            <constraint firstItem="hAa-fg-xFu" firstAttribute="top" secondItem="vfm-gp-VL6" secondAttribute="top" constant="79" id="ffz-OZ-brd"/>
-                            <constraint firstItem="KPH-lz-7ye" firstAttribute="top" secondItem="vfm-gp-VL6" secondAttribute="top" constant="150" id="iYG-Vs-hba"/>
+                            <constraint firstItem="KPH-lz-7ye" firstAttribute="top" secondItem="vfm-gp-VL6" secondAttribute="top" constant="109" id="8LF-9B-46O"/>
+                            <constraint firstItem="ul8-xn-2jM" firstAttribute="centerX" secondItem="vfm-gp-VL6" secondAttribute="centerX" type="default" id="FVB-L9-xQB"/>
+                            <constraint firstItem="akD-vf-0YT" firstAttribute="top" secondItem="vfm-gp-VL6" secondAttribute="top" constant="179" id="P0D-x2-xs6"/>
+                            <constraint firstItem="hAa-fg-xFu" firstAttribute="top" secondItem="vfm-gp-VL6" secondAttribute="top" constant="38" id="SuF-jt-ize"/>
+                            <constraint firstAttribute="bottom" secondItem="ul8-xn-2jM" secondAttribute="bottom" constant="64" id="lnD-yq-mDh"/>
                             <constraint firstItem="ul8-xn-2jM" firstAttribute="centerX" secondItem="akD-vf-0YT" secondAttribute="centerX" type="default" id="qOd-Fx-Y6B"/>
                             <constraint firstItem="hAa-fg-xFu" firstAttribute="centerX" secondItem="KPH-lz-7ye" secondAttribute="centerX" type="default" id="reE-IF-lDu"/>
                             <constraint firstItem="KPH-lz-7ye" firstAttribute="centerX" secondItem="akD-vf-0YT" secondAttribute="centerX" type="default" id="zTA-TH-qEq"/>
@@ -134,6 +134,22 @@
             <point key="canvasLocation" x="140" y="152"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="BAMainViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/BAMainViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="activateBackground:"/>
+                <relationship kind="action" name="endAdventure:"/>
+                <relationship kind="action" name="startAdventure:"/>
+                <relationship kind="outlet" name="endButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="locButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="startButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
