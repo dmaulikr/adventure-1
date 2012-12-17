@@ -48,12 +48,18 @@ int const seconds = 1.0;
         backgroundStarted = false;
         [self.timer invalidate];
         self.timer = nil;
+        [self.locButton setTitle:@"Get my location, yo" forState:UIControlStateNormal];
     } else {
         UIApplication* app = [UIApplication sharedApplication];
         task = [app beginBackgroundTaskWithExpirationHandler:^{[self backgroundTask:app];}];
         self.timer = [NSTimer scheduledTimerWithTimeInterval:seconds target:self selector:@selector(getLocation) userInfo:nil repeats:YES];
         self->backgroundStarted = true;
+        [self.locButton setTitle:@"Stop getting my location, Yo" forState:UIControlStateNormal];
     }
+}
+
+-(IBAction)endAdventure:(id)sender{
+    
 }
 
 - (CLLocation*)getLocation {
