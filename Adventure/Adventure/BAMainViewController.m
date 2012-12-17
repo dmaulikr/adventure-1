@@ -9,6 +9,9 @@
 #import "BAMainViewController.h"
 #import "BAAppDelegate.h"
 #import "Location.h"
+#define kG_API_KEY @"AIzaSyBreyyLHJ3ycs5M2TshR1x65SrWeDpmMAo"
+#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+
 @interface BAMainViewController ()
 
 @end
@@ -16,6 +19,7 @@
 @implementation BAMainViewController
 
 int const seconds = 1.0;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -75,7 +79,20 @@ int const seconds = 1.0;
 }
 
 -(void)reverseGeocodeWithLoc:(CLLocation*) loc {
+    double lat = 10;
+    double lon = 10;
+    NSUInteger rad = 10;
+    NSString* url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%f,%f&radius=%i&sensor=true&key=%@", lat, lon, rad, kG_API_KEY];
     
+    NSURL* requestUrl = [NSURL URLWithString:url];
+    dispatch_async(kBgQueue, ^{
+        NSData* data = [NSData dataWithContentsOfURL: requestUrl];
+        NSDictionary* json = [NSJSONSerialization
+                              JSONObjectWithData:data //1
+                              options:kNilOptions
+                              error:nil];
+        NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    });
 }
 
 - (CLLocation*)getLocation {
@@ -88,6 +105,7 @@ int const seconds = 1.0;
     [_locationManager startUpdatingLocation];
     sleep(1);
     CLLocation *loc = [_locationManager location];
+    [self reverseGeocodeWithLoc:loc];
     NSLog(@"loc: %@", [loc description]);
     [_locationManager stopUpdatingLocation];
     
@@ -111,7 +129,6 @@ int const seconds = 1.0;
 	if (![_managedObjectContext save:&error]) {
         NSLog(@"Error Error Error");
     }
-    
     return loc;
 }
 @end

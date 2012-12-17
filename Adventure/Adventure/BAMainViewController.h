@@ -25,5 +25,6 @@
 - (CLLocation*)getLocation;
 - (IBAction)activateBackground:(id)sender;
 - (IBAction)endAdventure:(id)sender;
+- (void)reverseGeocodeWithLoc:(CLLocation*) loc;
 
 @end
