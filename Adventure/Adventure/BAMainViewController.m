@@ -51,7 +51,7 @@ int const seconds = 1.0;
         backgroundStarted = false;
         [self.timer invalidate];
         self.timer = nil;
-        [self.locButton setTitle:@"Get my location, yo" forState:UIControlStateNormal];
+        [self.locButton setTitle:@"Get my location, Yo" forState:UIControlStateNormal];
     } else {
         UIApplication* app = [UIApplication sharedApplication];
         task = [app beginBackgroundTaskWithExpirationHandler:^{[self backgroundTask:app];}];
@@ -62,6 +62,18 @@ int const seconds = 1.0;
 }
 
 -(IBAction)endAdventure:(id)sender{
+    UIApplication* app = [UIApplication sharedApplication];
+    [app endBackgroundTask:task];
+    backgroundStarted = false;
+    if (self.timer){
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+    [self.locButton setTitle:@"Get my location, Yo" forState:UIControlStateNormal];
+    
+}
+
+-(void)reverseGeocodeWithLoc:(CLLocation*) loc {
     
 }
 
