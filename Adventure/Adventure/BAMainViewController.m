@@ -7,7 +7,7 @@
 //
 
 #import "BAMainViewController.h"
-
+#import "BAAppDelegate.h"
 @interface BAMainViewController ()
 
 @end
@@ -26,6 +26,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIApplication *app = [UIApplication sharedApplication];
+    _managedObjectContext = ((BAAppDelegate*)[app delegate]).managedObjectContext;
+    
 	// Do any additional setup after loading the view.
 }
 
@@ -36,16 +39,16 @@
 }
 
 - (IBAction)getLocation:(id)sender {
-    if (!locationManager)
+    if (!_locationManager)
     {
-        locationManager = [[CLLocationManager alloc] init];
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-        locationManager.delegate = self;
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+        _locationManager.delegate = self;
     }
-    [locationManager startUpdatingLocation];
+    [_locationManager startUpdatingLocation];
     sleep(1);
-    CLLocation *loc = [locationManager location];
+    CLLocation *loc = [_locationManager location];
     NSLog(@"loc: %@", [loc description]);
-    [locationManager stopUpdatingLocation];
+    [_locationManager stopUpdatingLocation];
 }
 @end

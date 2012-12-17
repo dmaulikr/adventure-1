@@ -9,5 +9,7 @@
 #import "Location.h"
 
 @implementation Location
-
+@dynamic creationDate;
+@dynamic latitude;
+@dynamic longitude;
 @end

@@ -10,8 +10,12 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface BAMainViewController : UIViewController <CLLocationManagerDelegate> {
-    CLLocationManager *locationManager;
 }
+
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+
+@property (nonatomic, retain) CLLocationManager *locationManager;
+
 @property (strong, nonatomic) IBOutlet UIButton *locButton;
 - (IBAction)getLocation:(id)sender;
 

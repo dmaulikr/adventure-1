@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9A219F01167EA1F200D9FA5B /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A219F00167EA1F200D9FA5B /* iPhoneStoryboard.storyboard */; };
 		9A219F05167EA24700D9FA5B /* BAMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A219F04167EA24700D9FA5B /* BAMainViewController.m */; };
+		9A9661BE167EBFB40094769E /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9661BD167EBFB40094769E /* Location.m */; };
 		D6EA8EFA167EA05500E6D40F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6EA8EF9167EA05500E6D40F /* UIKit.framework */; };
 		D6EA8EFC167EA05500E6D40F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6EA8EFB167EA05500E6D40F /* Foundation.framework */; };
 		D6EA8EFE167EA05500E6D40F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6EA8EFD167EA05500E6D40F /* CoreGraphics.framework */; };
@@ -43,6 +44,8 @@
 		9A219F00167EA1F200D9FA5B /* iPhoneStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
 		9A219F03167EA24700D9FA5B /* BAMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAMainViewController.h; sourceTree = "<group>"; };
 		9A219F04167EA24700D9FA5B /* BAMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAMainViewController.m; sourceTree = "<group>"; };
+		9A9661BC167EBFB40094769E /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		9A9661BD167EBFB40094769E /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		D6EA8EF5167EA05500E6D40F /* Adventure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Adventure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6EA8EF9167EA05500E6D40F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D6EA8EFB167EA05500E6D40F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -94,6 +97,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A9661BA167EBF830094769E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9A9661BC167EBFB40094769E /* Location.h */,
+				9A9661BD167EBFB40094769E /* Location.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		D6EA8EEA167EA05500E6D40F = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +141,7 @@
 		D6EA8F01167EA05500E6D40F /* Adventure */ = {
 			isa = PBXGroup;
 			children = (
+				9A9661BA167EBF830094769E /* Model */,
 				D6EA8F0A167EA05500E6D40F /* BAAppDelegate.h */,
 				D6EA8F0B167EA05500E6D40F /* BAAppDelegate.m */,
 				9A219F03167EA24700D9FA5B /* BAMainViewController.h */,
@@ -288,6 +301,7 @@
 				D6EA8F0C167EA05500E6D40F /* BAAppDelegate.m in Sources */,
 				D6EA8F15167EA05600E6D40F /* Adventure.xcdatamodeld in Sources */,
 				9A219F05167EA24700D9FA5B /* BAMainViewController.m in Sources */,
+				9A9661BE167EBFB40094769E /* Location.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
