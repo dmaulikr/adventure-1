@@ -24,6 +24,7 @@
 		D6EA8F20167EA05600E6D40F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6EA8EFF167EA05500E6D40F /* CoreData.framework */; };
 		D6EA8F28167EA05600E6D40F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D6EA8F26167EA05600E6D40F /* InfoPlist.strings */; };
 		D6EA8F2B167EA05600E6D40F /* AdventureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D6EA8F2A167EA05600E6D40F /* AdventureTests.m */; };
+		D6EA8F35167EA2EB00E6D40F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6EA8F34167EA2EB00E6D40F /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		D6EA8F27167EA05600E6D40F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D6EA8F29167EA05600E6D40F /* AdventureTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdventureTests.h; sourceTree = "<group>"; };
 		D6EA8F2A167EA05600E6D40F /* AdventureTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdventureTests.m; sourceTree = "<group>"; };
+		D6EA8F34167EA2EB00E6D40F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6EA8F35167EA2EB00E6D40F /* CoreLocation.framework in Frameworks */,
 				D6EA8EFA167EA05500E6D40F /* UIKit.framework in Frameworks */,
 				D6EA8EFC167EA05500E6D40F /* Foundation.framework in Frameworks */,
 				D6EA8EFE167EA05500E6D40F /* CoreGraphics.framework in Frameworks */,
@@ -89,6 +92,7 @@
 		D6EA8EEA167EA05500E6D40F = {
 			isa = PBXGroup;
 			children = (
+				D6EA8F34167EA2EB00E6D40F /* CoreLocation.framework */,
 				D6EA8F01167EA05500E6D40F /* Adventure */,
 				D6EA8F23167EA05600E6D40F /* AdventureTests */,
 				D6EA8EF8167EA05500E6D40F /* Frameworks */,
