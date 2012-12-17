@@ -14,6 +14,8 @@
 
 @implementation BAMainViewController
 
+int const seconds = 10;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -33,6 +35,16 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)backgroundTask:(UIApplication*) app{
+    NSTimer* backgroundTimer = [NSTimer timerWithTimeInterval:seconds target:self selector:@selector(getLocation) userInfo:nil repeats:YES];
+    [backgroundTimer fire];
+}
+
+- (IBAction)activateBackground:(id)sender{
+    UIApplication* app = [UIApplication sharedApplication];
+    [app beginBackgroundTaskWithExpirationHandler:^{[self backgroundTask:app];}];
 }
 
 - (IBAction)getLocation:(id)sender {
