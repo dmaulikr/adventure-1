@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface BAMainViewController : UIViewController
+@interface BAMainViewController : UIViewController {
+    CLLocationManager *locManager;
+}
+@property (strong, nonatomic) IBOutlet UIButton *locButton;
+- (IBAction)getLocation:(id)sender;
 
 @end
