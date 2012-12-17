@@ -14,6 +14,8 @@
 
 @implementation BAMainViewController
 
+int const seconds = 1.0;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -38,7 +40,26 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)getLocation:(id)sender {
+-(void)backgroundTask:(UIApplication*) app{
+    NSLog(@"background fired");
+}
+
+- (IBAction)activateBackground:(id)sender{
+    if (backgroundStarted){
+        UIApplication* app = [UIApplication sharedApplication];
+        [app endBackgroundTask:task];
+        backgroundStarted = false;
+        [self.timer invalidate];
+        self.timer = nil;
+    } else {
+        UIApplication* app = [UIApplication sharedApplication];
+        task = [app beginBackgroundTaskWithExpirationHandler:^{[self backgroundTask:app];}];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:seconds target:self selector:@selector(getLocation) userInfo:nil repeats:YES];
+        self->backgroundStarted = true;
+    }
+}
+
+- (CLLocation*)getLocation {
     if (!_locationManager)
     {
         _locationManager = [[CLLocationManager alloc] init];
@@ -50,5 +71,6 @@
     CLLocation *loc = [_locationManager location];
     NSLog(@"loc: %@", [loc description]);
     [_locationManager stopUpdatingLocation];
+    return loc;
 }
 @end
