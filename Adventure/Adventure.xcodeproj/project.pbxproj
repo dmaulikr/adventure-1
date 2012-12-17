@@ -11,6 +11,7 @@
 		9A219F05167EA24700D9FA5B /* BAMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A219F04167EA24700D9FA5B /* BAMainViewController.m */; };
 		9A9661BE167EBFB40094769E /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9661BD167EBFB40094769E /* Location.m */; };
 		9A9661C1167EC9460094769E /* Adventure.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9661C0167EC9460094769E /* Adventure.m */; };
+		9A9661C4167EE3360094769E /* BADataPresentationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A9661C3167EE3360094769E /* BADataPresentationViewController.m */; };
 		D6EA8EFA167EA05500E6D40F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6EA8EF9167EA05500E6D40F /* UIKit.framework */; };
 		D6EA8EFC167EA05500E6D40F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6EA8EFB167EA05500E6D40F /* Foundation.framework */; };
 		D6EA8EFE167EA05500E6D40F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6EA8EFD167EA05500E6D40F /* CoreGraphics.framework */; };
@@ -49,6 +50,8 @@
 		9A9661BD167EBFB40094769E /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		9A9661BF167EC9460094769E /* Adventure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Adventure.h; sourceTree = "<group>"; };
 		9A9661C0167EC9460094769E /* Adventure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Adventure.m; sourceTree = "<group>"; };
+		9A9661C2167EE3360094769E /* BADataPresentationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BADataPresentationViewController.h; sourceTree = "<group>"; };
+		9A9661C3167EE3360094769E /* BADataPresentationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BADataPresentationViewController.m; sourceTree = "<group>"; };
 		D6EA8EF5167EA05500E6D40F /* Adventure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Adventure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6EA8EF9167EA05500E6D40F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D6EA8EFB167EA05500E6D40F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -151,6 +154,8 @@
 				D6EA8F0B167EA05500E6D40F /* BAAppDelegate.m */,
 				9A219F03167EA24700D9FA5B /* BAMainViewController.h */,
 				9A219F04167EA24700D9FA5B /* BAMainViewController.m */,
+				9A9661C2167EE3360094769E /* BADataPresentationViewController.h */,
+				9A9661C3167EE3360094769E /* BADataPresentationViewController.m */,
 				D6EA8F13167EA05600E6D40F /* Adventure.xcdatamodeld */,
 				D6EA8F02167EA05500E6D40F /* Supporting Files */,
 				9A219F00167EA1F200D9FA5B /* iPhoneStoryboard.storyboard */,
@@ -308,6 +313,7 @@
 				9A219F05167EA24700D9FA5B /* BAMainViewController.m in Sources */,
 				9A9661BE167EBFB40094769E /* Location.m in Sources */,
 				9A9661C1167EC9460094769E /* Adventure.m in Sources */,
+				9A9661C4167EE3360094769E /* BADataPresentationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
