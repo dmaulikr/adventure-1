@@ -59,10 +59,8 @@ int const seconds = 1.0;
 	if (mutableFetchResults == nil) {
 		// Handle the error.
 	}
-	
-	// Set self's events array to the mutable array, then clean up.
+    // Set self's events array to the mutable array, then clean up.
 	[self setLocationsArray:mutableFetchResults];
-    
 	// Do any additional setup after loading the view.
 }
 
@@ -107,6 +105,9 @@ int const seconds = 1.0;
     [_startButton setEnabled:YES];
     [_startButton setAlpha:1];
     
+    UIApplication* app = [UIApplication sharedApplication];
+    [app endBackgroundTask:task];
+    
 }
 
 - (IBAction)startAdventure:(id)sender {
@@ -116,22 +117,20 @@ int const seconds = 1.0;
     [_startButton setEnabled:NO];
     [_startButton setAlpha:.5];
     if ([_locationsArray lastObject]) {
-        advNum = [[_locationsArray objectAtIndex:0] adventure];
+        advNum = [[[_locationsArray objectAtIndex:0] adventure] integerValue] + 1;
     }
     else
         advNum = 0;
     
     Adventure *adv = (Adventure *)[NSEntityDescription insertNewObjectForEntityForName:@"Adventure" inManagedObjectContext:_managedObjectContext];
     [adv setName:@"Generic Name"];
-    [adv setNumber:advNum];
+    [adv setNumber:[NSNumber numberWithInt:advNum]];
     
     // Commit the change.
 	NSError *error;
 	if (![_managedObjectContext save:&error]) {
         NSLog(@"Error Error Error");
     }
-    UIApplication* app = [UIApplication sharedApplication];
-    [app endBackgroundTask:task];
     backgroundStarted = false;
     if (self.timer){
         [self.timer invalidate];
@@ -181,7 +180,7 @@ int const seconds = 1.0;
 	CLLocationCoordinate2D coordinate = [loc coordinate];
 	[location setLatitude:[NSNumber numberWithDouble:coordinate.latitude]];
 	[location setLongitude:[NSNumber numberWithDouble:coordinate.longitude]];
-    [location setAdventure:advNum];
+    [location setAdventure:[NSNumber numberWithInt:advNum]];
 	
 	// Should be the location's timestamp, but this will be constant for simulator.
 //	[location setCreationDate:[loc timestamp]];

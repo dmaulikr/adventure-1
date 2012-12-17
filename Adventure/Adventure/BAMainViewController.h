@@ -13,13 +13,13 @@
 
     UIBackgroundTaskIdentifier task;
     BOOL backgroundStarted;
-    NSNumber *advNum;
+    int advNum;
 }
 
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, retain) NSMutableArray *locationsArray;
 
 @property (nonatomic, retain) CLLocationManager *locationManager;
-@property (nonatomic, retain) NSMutableArray *locationsArray;
 
 @property (strong, nonatomic) IBOutlet UIButton *locButton;
 @property (strong, nonatomic) IBOutlet UIButton *endButton;
