@@ -9,6 +9,7 @@
 #import "BAMainViewController.h"
 #import "BAAppDelegate.h"
 #import "Adventure.h"
+#include <math.h>
 
 #define kG_API_KEY @"AIzaSyBreyyLHJ3ycs5M2TshR1x65SrWeDpmMAo"
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
@@ -64,6 +65,7 @@ int const seconds = 1.0;
 	[self setLocationsArray:mutableFetchResults];
 	// Do any additional setup after loading the view.
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -161,7 +163,7 @@ int const seconds = 1.0;
 	 Create a new instance of the Event entity.
 	 */
 	Location *location = (Location *)[NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:_managedObjectContext];
-	
+    
 	// Configure the new event with information from the location.
 	CLLocationCoordinate2D coordinate = [loc coordinate];
 	[location setLatitude:[NSNumber numberWithDouble:coordinate.latitude]];
@@ -180,8 +182,10 @@ int const seconds = 1.0;
         }
         [_locationsArray insertObject:location atIndex:0];
     };
-    
-    [self reverseGeocodeWithLoc:location andBlock:commitBlock];
+    Location *loc1 = (Location*)[_locationsArray objectAtIndex:0];
+    if ([self isSignificantDistance:loc1 and:location]) {
+        [self reverseGeocodeWithLoc:location andBlock:commitBlock];
+    }
 	// Commit the change.
     return loc;
 }
@@ -199,5 +203,19 @@ int const seconds = 1.0;
         
         block(loc, data);
     });
+}
+
+- (BOOL)isSignificantDistance:(Location*)loc1 and:(Location*)otherLoc {
+    double R = 6371; // km
+    double dLat = ([otherLoc.latitude doubleValue]-[loc1.latitude doubleValue]) * M_PI / 180.0;
+    double dLon = ([otherLoc.longitude doubleValue]-[loc1.longitude doubleValue]) * M_PI / 180.0;
+    double lat1 = [loc1.latitude doubleValue] * M_PI / 180.0;
+    double lat2 = [otherLoc.latitude doubleValue] * M_PI / 180.0;
+    
+    double a = sin(dLat/2) * sin(dLat/2) + sin(dLon/2) * sin(dLon/2) * cos(lat1) * cos(lat2);
+    double c = 2 * atan2(sqrt(a), sqrt(1-a));
+    double d = R * c;
+    NSLog(@"The distance Between the points in meters is %.10f", d);
+    return d > 10.0;
 }
 @end
